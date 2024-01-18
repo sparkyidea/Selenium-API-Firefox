@@ -6,7 +6,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install geckodriver
-
 RUN curl -o geckodriver.tar.gz -sSL https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux-aarch64.tar.gz \
     && tar -xzf geckodriver.tar.gz -C /usr/local/bin \
     && rm geckodriver.tar.gz
