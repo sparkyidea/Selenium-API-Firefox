@@ -13,7 +13,7 @@ Follow these steps to get started with Selenium-API-Firefox:
 
 1. **Clone the Repository**
 ```
-git clone [URL of the Selenium-API-Firefox repository]
+git clone https://github.com/sparkyideainc/Selenium-API-Firefox/tree/main
 ```
 
 2. **Prepare Your Project Files**
@@ -48,7 +48,7 @@ Contributions to Selenium-API-Firefox are welcome! Please adhere to the followin
 5. Create a new Pull Request.
 
 ## License
-[Include license information here, if applicable]
+MIT License
 
 ## Contact
 For any queries or feedback regarding Selenium-API-Firefox, feel free to reach out.
