@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from google_search import google_search
+from bing_search import bing_search
 
 app = FastAPI()
 
@@ -9,5 +9,5 @@ async def root():
 
 @app.get("/search/{query}")
 async def search(query: str):
-    results = google_search(query)
+    results = bing_search(query)
     return {"message": results}

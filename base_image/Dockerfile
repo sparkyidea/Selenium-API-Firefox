@@ -6,9 +6,15 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install geckodriver
-RUN curl -o geckodriver.tar.gz -sSL https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux-aarch64.tar.gz \
-    && tar -xzf geckodriver.tar.gz -C /usr/local/bin \
-    && rm geckodriver.tar.gz
+ARG TARGETPLATFORM
+RUN case "$TARGETPLATFORM" in \
+         "linux/amd64") \
+           curl -o geckodriver.tar.gz -sSL https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux64.tar.gz ;; \
+         "linux/arm64") \
+           curl -o geckodriver.tar.gz -sSL https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux-aarch64.tar.gz ;; \
+       esac && \
+    tar -xzf geckodriver.tar.gz -C /usr/local/bin && \
+    rm geckodriver.tar.gz
 
 # Copy your application files
 COPY ./app/ /app/
@@ -16,7 +22,8 @@ COPY ./app/ /app/
 WORKDIR /app
 
 # Install Python dependencies
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt && \
+    rm requirements.txt
 
 EXPOSE 8080
 
